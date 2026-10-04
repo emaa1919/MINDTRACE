@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MINDTRACE — Pembelajaran Sains Interaktif</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <b><i>M</i> MIND<span>TRACE</span></b>
+  <nav><a href="#home">Beranda</a><a href="#lab">Eksplorasi</a><a href="#mission">Misi</a><a href="#diagnosis">Diagnosis</a><a href="#progress">Progres</a></nav>
+  <button onclick="go('discover')">Mulai Belajar →</button>
+</header>
+<main>
+<section id="home" class="hero">
+  <div><small>PEMBELAJARAN SAINS INTERAKTIF</small>
+    <h1>Jelajahi.<br><em>Pikirkan.</em><br>Temukan.</h1>
+    <p>Website pembelajaran sains yang menggabungkan simulasi interaktif, pemecahan masalah, kuis, dan <b>Misconception Detector</b> untuk membantu siswa memahami konsep sekaligus cara berpikirnya.</p>
+    <button onclick="go('discover')">Mulai Belajar →</button>
+  </div>
+  <div class="visual"><div class="glass"><small>LAB KALOR · INTERAKTIF</small><div class="objects"><strong>▰</strong><span>↔</span><strong>▰</strong></div><p>Menurutmu, apa yang akan terjadi?</p></div></div>
+</section>
+
+<section id="discover"><small>01 · TEMUKAN</small><h2>Mulai dari cara berpikirmu.</h2>
+  <div class="grid"><article><label>FENOMENA</label><h3>Mengapa dua benda di ruangan yang sama dapat terasa berbeda saat disentuh?</h3><div class="emoji">🥄 &nbsp; 🪵</div></article>
+  <article><p>Buat prediksimu sebelum melakukan eksplorasi.</p><h3>Menurutmu, penjelasan yang paling tepat adalah...</h3>
+    <label><input type="radio" name="pred" value="m2"> Logam memiliki suhu yang lebih rendah.</label>
+    <label><input type="radio" name="pred" value="m1"> Logam memiliki lebih sedikit kalor.</label>
+    <label><input type="radio" name="pred" value="correct"> Setiap bahan memiliki kemampuan perpindahan energi yang berbeda.</label>
+    <label><input type="radio" name="pred" value="uncertain"> Saya belum yakin.</label>
+    <button onclick="savePrediction()">Simpan Prediksi →</button>
+  </article></div>
+</section>
+
+<section id="lab"><small>02 · EKSPLORASI</small><h2>🔬 Laboratorium Kalor</h2><p>Ubah variabel, jalankan simulasi, lalu amati hasilnya.</p>
+  <div class="lab"><div class="labview"><div id="block">▰</div><strong id="temp">25°C</strong><span>SUHU BENDA</span></div>
+    <div><label>Bahan<select id="material"><option>Logam</option><option>Kayu</option><option>Plastik</option></select></label>
+      <label>Suhu awal<input id="range" type="range" min="5" max="80" value="25"></label>
+      <label>Waktu kontak<input id="time" type="range" min="0" max="10" value="5"></label>
+      <button onclick="simulate()">▶ Jalankan Simulasi</button>
+      <p id="feedback" class="note">Coba ubah variabel, lalu amati apa yang terjadi.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mission"><small>03 · MISI</small><h2>Pecahkan Misterinya</h2><article class="mission"><label>MISI 01</label><h3>Misteri Logam yang Terasa Dingin</h3>
+  <p>Logam dan kayu telah berada di ruangan yang sama selama beberapa jam. Saat disentuh, logam terasa lebih dingin.</p>
+  <h3>Apakah hal tersebut berarti suhu logam pasti lebih rendah?</h3>
+  <button onclick="mission('m2',this)">Ya, karena logam terasa lebih dingin.</button>
+  <button onclick="mission('m3',this)">Ya, karena logam mengandung lebih sedikit kalor.</button>
+  <button onclick="mission('correct',this)">Belum tentu. Jenis bahan memengaruhi perpindahan energi.</button>
+  <button onclick="mission('uncertain',this)">Saya membutuhkan bukti lebih lanjut.</button>
+  <div id="missionResult"></div></article></section>
+
+<section id="diagnosis"><small>04 · DIAGNOSIS</small><h2>🧠 Bagaimana kamu berpikir?</h2><div class="diagnosis"><article><h3 id="dtitle">Selesaikan misi terlebih dahulu.</h3>
+  <p id="dtext">MINDTRACE akan menganalisis jawabanmu dan menunjukkan kemungkinan pola pemahaman yang muncul.</p><div class="meter"><i id="meter"></i></div><span>Kemungkinan miskonsepsi — bukan penilaian, tetapi petunjuk untuk belajar.</span></article>
+  <article class="map"><b>PETA PEMIKIRANMU</b><div>SUHU</div><div>↓</div><div>KALOR</div><strong id="warning">⌁ Menunggu jawaban</strong></article></div></section>
+
+<section id="learn"><small>05 · JALUR BELAJAR PERSONAL</small><h2>Jalur Belajarmu</h2><div class="path">
+  <div>01 🎥 <b>Tonton</b><span>Perbedaan suhu dan kalor · 3 menit</span></div>
+  <div>02 🔬 <b>Eksplorasi</b><span>Ulangi simulasi dengan bahan berbeda</span></div>
+  <div>03 💭 <b>Jelaskan</b><span>Coba tantangan dengan bahasamu sendiri</span></div>
+  <div>04 🔄 <b>Periksa Kembali</b><span>Terapkan konsep pada konteks baru</span></div>
+</div><button onclick="go('recheck')">Lanjut →</button></section>
+
+<section id="recheck"><small>06 · PERIKSA KEMBALI</small><h2>Konteks baru, pemikiran yang sama.</h2><article><h3>Lantai Keramik dan Karpet</h3>
+  <p>Lantai keramik dan karpet berada di ruangan yang sama sepanjang malam. Saat diinjak tanpa alas kaki, keramik terasa lebih dingin.</p>
+  <label><input type="radio" name="re" value="wrong"> Keramik pasti memiliki suhu yang lebih rendah.</label>
+  <label><input type="radio" name="re" value="wrong"> Karpet mengandung lebih banyak kalor.</label>
+  <label><input type="radio" name="re" value="correct"> Keduanya dapat memiliki suhu yang sama, tetapi laju perpindahan energinya berbeda.</label>
+  <button onclick="recheck()">Kirim Jawaban →</button><div id="reResult"></div></article></section>
+
+<section id="progress"><small>PROGRES BELAJAR</small><h2>Dari cara berpikir menuju pemahaman.</h2><div class="scores"><article><small>SEBELUM</small><strong id="before">—</strong></article><b>→</b><article><small>SESUDAH</small><strong id="after">—</strong></article></div><p id="final">Selesaikan seluruh perjalanan untuk melihat progresmu.</p></section>
+</main>
+<footer>MINDTRACE · Jelajahi. Pikirkan. Temukan.</footer>
+<script src="script.js"></script>
+</body></html>
